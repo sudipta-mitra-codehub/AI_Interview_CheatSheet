@@ -1,0 +1,84 @@
+🔹 Basic RAG Interview Questions
+1. What is Retrieval-Augmented Generation (RAG)?
+Answer:
+RAG is an AI technique that combines retrieval (fetching relevant information from a knowledge base/vector database) with generation (using an LLM to produce responses). Instead of relying only on the LLM’s training data, it retrieves the most relevant documents and augments the prompt to generate more accurate, contextual, and up-to-date answers.
+
+2. Why do we use RAG?
+Answer:
+	• Reduces hallucination in LLMs
+	• Provides up-to-date domain knowledge
+	• Handles proprietary/private data
+	• Improves accuracy in enterprise search, chatbots, and Q&A systems
+
+3. What are the main components of a RAG system?
+Answer:
+	1. Retriever – Finds relevant documents (e.g., FAISS, Pinecone, Azure Cognitive Search).
+	2. Generator – LLM that uses retrieved context to produce responses (e.g., GPT, LLaMA).
+	3. Knowledge Base – Where data is stored, often in vector embeddings.
+	4. Orchestrator / Pipeline – Combines retrieval + generation.
+
+4. What is the difference between RAG and fine-tuning?
+Answer:
+	• Fine-tuning: Updates model weights with new training data → costly and static.
+	• RAG: Keeps model fixed, retrieves external knowledge dynamically → flexible and cheaper.
+
+🔹 Intermediate RAG Interview Questions
+5. How are documents stored and retrieved in RAG?
+Answer:
+	• Documents are converted into embeddings (dense vector representations) using embedding models.
+	• These vectors are stored in a vector database.
+	• At query time, the user query is also embedded, and similarity search (e.g., cosine similarity, dot product) retrieves the most relevant documents.
+
+6. What are some popular vector databases used in RAG?
+Answer:
+	• FAISS (Facebook AI Similarity Search)
+	• Pinecone
+	• Weaviate
+	• Milvus
+	• Azure Cognitive Search with Vector Indexing
+
+7. What are common challenges with RAG?
+Answer:
+	• Choosing the right chunk size for documents
+	• Balancing recall vs. precision in retrieval
+	• Latency (retrieval + generation can be slow)
+	• Keeping the knowledge base updated
+	• Handling multi-turn conversations with memory
+
+8. How does chunking affect RAG performance?
+Answer:
+	• Too small chunks → retrieval may miss context.
+	• Too large chunks → irrelevant content included, higher token cost.
+	• Optimal chunk size depends on domain, usually 200–500 words per chunk.
+
+🔹 Advanced RAG Interview Questions
+9. How do you evaluate a RAG system?
+Answer:
+	• Quantitative metrics:
+		○ Retrieval precision/recall
+		○ MRR (Mean Reciprocal Rank)
+		○ BLEU/ROUGE for generation quality
+	• Qualitative metrics:
+		○ Human evaluation for factual accuracy
+		○ User satisfaction scores
+	• Groundedness checks: Ensuring answers are based on retrieved context
+
+10. What optimizations can improve RAG performance?
+Answer:
+	• Use Hybrid Search (vector + keyword)
+	• Apply Re-ranking models (e.g., BERT re-ranker) after initial retrieval
+	• Cache embeddings and responses for frequent queries
+	• Use query expansion or embedding fine-tuning for better semantic retrieval
+	• Apply memory mechanism for multi-turn chat
+
+11. What are some use cases of RAG in the real world?
+Answer:
+	• Enterprise chatbots (customer support with private data)
+	• Legal & compliance Q&A
+	• Healthcare assistants with medical knowledge bases
+	• E-commerce product search
+	• Code assistants retrieving documentation
+
+12. How does RAG help reduce hallucinations?
+Answer:
+Instead of relying only on the LLM’s parametric memory, RAG grounds answers in retrieved documents. Since responses are based on external verified sources, hallucinations (confident but false answers) are reduced.
